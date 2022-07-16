@@ -12,6 +12,7 @@ public class SphereMovement : MonoBehaviour
     void Start()
     {
         target = player.transform.position;
+        GetComponent<Renderer>().material.color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
     }
 
     // Update is called once per frame
@@ -26,6 +27,7 @@ public class SphereMovement : MonoBehaviour
             if (numSpheres > 0) {
                 numSpheres -= 1;
                 target = new Vector3(Random.Range(target.x - 0.25f, target.x + 0.25f), Random.Range(target.y - 0.25f, target.y + 0.25f), target.z);
+                GetComponent<Renderer>().material.color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
             }
         }
 
