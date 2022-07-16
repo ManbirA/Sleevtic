@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PersonBehaviour : MonoBehaviour
 {
+    public int numSpheres = 10;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,11 +20,14 @@ public class PersonBehaviour : MonoBehaviour
 
     void OnCollisionEnter(Collision col)
     {
-        Debug.Log("collision start");
-        Debug.Log(col.gameObject.name);
         if (col.gameObject.name == "Sphere") {
-            Debug.Log("Collision detected");
-            Destroy(col.gameObject);
+            if (numSpheres > 0) {
+                numSpheres -= 1;
+                col.gameObject.transform.position = new Vector3(Random.Range(-4.0f, 4.0f), Random.Range(2.0f, 8.0f), Random.Range(-6.0f, 10.0f));
+            } else {
+                Debug.Log("Destroy Sphere");
+                Destroy(col.gameObject);
+            }
         }
 
     }
