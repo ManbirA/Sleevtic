@@ -40,7 +40,11 @@ public class SphereMovement : MonoBehaviour
                     originalTarget.z
                 );
                 GetComponent<Renderer>().material.color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
-                // TODO: what happens if player got hit
+                
+                WWWForm form = new WWWForm();
+                form.AddField("motor1Active", "1");
+                form.AddField("motor1Effect", "1");
+                Requests.requestsInstance.PostRequest(form);
             }
         }
 
