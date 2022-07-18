@@ -17,7 +17,7 @@ public class SphereMovement : MonoBehaviour
         originalTarget = player.transform.position;
         currTarget = new Vector3(
             Random.Range(originalTarget.x - 0.20f, originalTarget.x + 0.20f), 
-            Random.Range(originalTarget.y - 0.50f, originalTarget.y), 
+            Random.Range(originalTarget.y - 0.50f, originalTarget.y + 0.5f), 
             originalTarget.z
         );
         GetComponent<Renderer>().material.color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
@@ -36,7 +36,7 @@ public class SphereMovement : MonoBehaviour
                 numSpheres -= 1;
                 currTarget = new Vector3(
                     Random.Range(originalTarget.x - 0.20f, originalTarget.x + 0.20f), 
-                    Random.Range(originalTarget.y - 0.50f, originalTarget.y), 
+                    Random.Range(originalTarget.y - 0.50f, originalTarget.y + 0.5f), 
                     originalTarget.z
                 );
                 GetComponent<Renderer>().material.color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
@@ -49,9 +49,10 @@ public class SphereMovement : MonoBehaviour
             numSpheres -= 1;
             currTarget = new Vector3(
                 Random.Range(originalTarget.x - 0.20f, originalTarget.x + 0.20f), 
-                Random.Range(originalTarget.y - 0.50f, originalTarget.y), 
+                Random.Range(originalTarget.y - 0.50f, originalTarget.y + 0.5f), 
                 originalTarget.z
             );
+            gameObject.transform.position = new Vector3(Random.Range(-4.0f, 4.0f), Random.Range(2.0f, 4.0f), Random.Range(3.0f, 19.0f));
             GetComponent<Renderer>().material.color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
         }
 
