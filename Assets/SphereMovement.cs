@@ -6,7 +6,6 @@ using UnityEngine.Networking;
 public class SphereMovement : MonoBehaviour
 {
     public GameObject player;
-    public int numSpheres = 10;
     public Vector3 currTarget;
     public Vector3 originalTarget;
 
@@ -58,30 +57,26 @@ public class SphereMovement : MonoBehaviour
 
     void OnCollisionEnter(Collision col)
     {
-        if (col.gameObject.name == "Person") {
-            if (numSpheres > 0) {
-                numSpheres -= 1;
-                currTarget = new Vector3(
-                    Random.Range(originalTarget.x - 0.20f, originalTarget.x + 0.20f), 
-                    Random.Range(originalTarget.y - 0.50f, originalTarget.y + 0.5f), 
-                    originalTarget.z
-                );
-                GetComponent<Renderer>().material.color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
-                
-                StartCoroutine(GetRequest("http://192.168.206.205:80"));
-            }
-        }
+        currTarget = new Vector3(
+            Random.Range(originalTarget.x - 0.20f, originalTarget.x + 0.20f), 
+            Random.Range(originalTarget.y - 0.50f, originalTarget.y + 0.5f), 
+            originalTarget.z
+        );
+
+        gameObject.transform.position = new Vector3(
+            Random.Range(-4.0f, 4.0f), 
+            Random.Range(2.0f, 4.0f), 
+            Random.Range(3.0f, 19.0f)
+        );
+        
+        GetComponent<Renderer>().material.color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
 
         if (col.gameObject.name == "Sword") {
             ScoreManager.scoreManagerInstance.AddPoint();
-            numSpheres -= 1;
-            currTarget = new Vector3(
-                Random.Range(originalTarget.x - 0.20f, originalTarget.x + 0.20f), 
-                Random.Range(originalTarget.y - 0.50f, originalTarget.y + 0.5f), 
-                originalTarget.z
-            );
-            gameObject.transform.position = new Vector3(Random.Range(-4.0f, 4.0f), Random.Range(2.0f, 4.0f), Random.Range(3.0f, 19.0f));
-            GetComponent<Renderer>().material.color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
+        }
+        
+        if (col.gameObject.name == "Shield") {
+            StartCoroutine(GetRequest("http://192.168.206.205:80/1/on"));
         }
 
     }
