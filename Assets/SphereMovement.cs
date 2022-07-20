@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
 public class SphereMovement : MonoBehaviour
 {
@@ -29,6 +30,32 @@ public class SphereMovement : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, currTarget, 5f * Time.deltaTime);
     }
 
+    public IEnumerator GetRequest(string uri)
+    {
+        using (UnityWebRequest webRequest = UnityWebRequest.Get(uri))
+        {
+            // Request and wait for the desired page.
+            yield return webRequest.SendWebRequest();
+
+            string[] pages = uri.Split('/');
+            int page = pages.Length - 1;
+
+            switch (webRequest.result)
+            {
+                case UnityWebRequest.Result.ConnectionError:
+                case UnityWebRequest.Result.DataProcessingError:
+                    Debug.LogError(pages[page] + ": Error: " + webRequest.error);
+                    break;
+                case UnityWebRequest.Result.ProtocolError:
+                    Debug.LogError(pages[page] + ": HTTP Error: " + webRequest.error);
+                    break;
+                case UnityWebRequest.Result.Success:
+                    Debug.Log(pages[page] + ":\nReceived: " + webRequest.downloadHandler.text);
+                    break;
+            }
+        }
+    }
+
     void OnCollisionEnter(Collision col)
     {
         if (col.gameObject.name == "Person") {
@@ -41,10 +68,7 @@ public class SphereMovement : MonoBehaviour
                 );
                 GetComponent<Renderer>().material.color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
                 
-                WWWForm form = new WWWForm();
-                form.AddField("motor1Active", "1");
-                form.AddField("motor1Effect", "1");
-                Requests.requestsInstance.PostRequest(form);
+                StartCoroutine(GetRequest("http://192.168.206.205:80"));
             }
         }
 
