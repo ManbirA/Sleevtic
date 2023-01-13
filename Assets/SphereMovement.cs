@@ -8,11 +8,13 @@ public class SphereMovement : MonoBehaviour
     public GameObject player;
     public Vector3 currTarget;
     public Vector3 originalTarget;
+    public int requestNum;
 
     // Start is called before the first frame update
     void Start()
     {
         Random.InitState(System.DateTime.Now.Millisecond);
+        requestNum = 1;
 
         originalTarget = player.transform.position;
         currTarget = new Vector3(
@@ -81,7 +83,11 @@ public class SphereMovement : MonoBehaviour
         }
 
         if (col.gameObject.name == "Shield") {
-            StartCoroutine(GetRequest("http://192.168.206.205:80/1/on"));
+            StartCoroutine(GetRequest("http://192.168.206.205:80/"+requestNum.ToString()+"/on"));
+            requestNum = requestNum + 1;
+            if (requestNum > 3) {
+                requestNum = 1;
+            }
         }
 
     }
