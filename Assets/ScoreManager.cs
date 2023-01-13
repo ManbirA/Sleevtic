@@ -21,7 +21,6 @@ public class ScoreManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PlayerPrefs.SetInt("highscoreValue", score);
         highscore = PlayerPrefs.GetInt("highscoreValue", 0);
         scoreText.text = score.ToString() + " Points";
         highScoreText.text = "High score: " + highscore.ToString();
@@ -36,6 +35,7 @@ public class ScoreManager : MonoBehaviour
     public void AddPoint() {
         score += 1;
         scoreText.text = score.ToString() + " Points";
+        PlayerPrefs.SetInt("highscore", score);
         if (score > highscore)
             PlayerPrefs.SetInt("highscoreValue", score);
     }
