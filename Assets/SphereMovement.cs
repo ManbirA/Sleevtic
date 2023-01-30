@@ -8,6 +8,7 @@ public class SphereMovement : MonoBehaviour
     public GameObject player;
     public Vector3 currTarget;
     public Vector3 originalTarget;
+    public float speed;
 
     // Start is called before the first frame update
     void Start()
@@ -25,13 +26,17 @@ public class SphereMovement : MonoBehaviour
             Random.Range(2.0f, 4.0f), 
             Random.Range(3.0f, 19.0f)
         );
-        GetComponent<Renderer>().material.color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
+        
+        if (speed == 0) {
+            speed = 5f;
+        }
+        // GetComponent<Renderer>().material.color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, currTarget, 5f * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, currTarget, speed * Time.deltaTime);
     }
 
     public IEnumerator GetRequest(string uri)
@@ -74,7 +79,7 @@ public class SphereMovement : MonoBehaviour
             Random.Range(3.0f, 19.0f)
         );
         
-        GetComponent<Renderer>().material.color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
+        // GetComponent<Renderer>().material.color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
 
         if (col.gameObject.name == "Sword") {
             ScoreManager.scoreManagerInstance.AddPoint();

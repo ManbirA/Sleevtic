@@ -21,7 +21,7 @@ public class PersonBehaviour : MonoBehaviour
 
     void OnCollisionEnter(Collision col)
     {
-        if (col.gameObject.name == "Sphere") {
+        if (col.gameObject.name == "Sphere" || col.gameObject.name == "Asteroid_C") {
             if (numSpheres > 1) {
                 numSpheres -= 1;
             } else {
