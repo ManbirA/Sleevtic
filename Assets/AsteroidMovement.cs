@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -11,9 +10,7 @@ public class AsteroidMovement : MonoBehaviour
     public Vector3 originalTarget;
     public float speed;
 
-    int wait = 0;
-
-    string[] objects = {"Asteroid_A", "Asteroid_E", "Asteroid_H", "Supernove_A", "Gas_Planet_A", "Sun"};
+    bool wait = true;
 
     // Start is called before the first frame update
     void Start()
@@ -36,20 +33,26 @@ public class AsteroidMovement : MonoBehaviour
             speed = 5f;
         }
 
-        wait = Random.Range(0, 100);
+       StartCoroutine( WaitHandler() );
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (wait < 0) { // move object
+        if (!wait) {
             transform.position = Vector3.MoveTowards(transform.position, currTarget, speed * Time.deltaTime);
-        } else if (wait == 0) { // changing state from not visible to visible
-            wait -= 1;
-            gameObject.SetActive(true);
-        } else { // wait before renderng again
-            wait -= 1;
         }
+    }
+
+    public IEnumerator WaitHandler()
+    {
+        gameObject.GetComponent<Renderer>().enabled = false;
+        wait = true;
+
+        yield return new WaitForSeconds(Random.Range(0, 5f));
+
+        gameObject.GetComponent<Renderer>().enabled = true;
+        wait = false;
     }
 
     public IEnumerator GetRequest(string uri)
@@ -80,10 +83,6 @@ public class AsteroidMovement : MonoBehaviour
 
     void OnCollisionEnter(Collision col)
     {
-        if (objects.Contains(col.gameObject.name)) {
-            return;
-        }
-
         currTarget = new Vector3(
             Random.Range(originalTarget.x - 0.20f, originalTarget.x + 0.20f), 
             Random.Range(originalTarget.y + 0.20f, originalTarget.y + 1.75f), 
@@ -96,13 +95,14 @@ public class AsteroidMovement : MonoBehaviour
             Random.Range(3.0f, 19.0f)
         );
 
-        gameObject.SetActive(false);
-        wait = 100;
+        if (col.gameObject.name == "Sword") {
+            ScoreManager.scoreManagerInstance.ResetCombo();
+        }
 
         if (col.gameObject.name == "Shield") {
             StartCoroutine(GetRequest("http://192.168.206.205:80/1/on"));
-        } else {
-            // ScoreManager.scoreManagerInstance.ResetCombo();
         }
+
+        StartCoroutine( WaitHandler() );
     }
 }

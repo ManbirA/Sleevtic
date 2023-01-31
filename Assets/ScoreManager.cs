@@ -13,6 +13,7 @@ public class ScoreManager : MonoBehaviour
 
     int score = 0;
     int highscore = 0;
+    int combo = 0;
 
     private void Awake() {
         scoreManagerInstance = this;
@@ -33,10 +34,15 @@ public class ScoreManager : MonoBehaviour
     }
 
     public void AddPoint() {
+        combo += 1;
         score += 1;
         scoreText.text = score.ToString() + " Points";
         PlayerPrefs.SetInt("highscore", score);
         if (score > highscore)
             PlayerPrefs.SetInt("highscoreValue", score);
+    }
+
+    public void ResetCombo() {
+        combo = 0;
     }
 }
