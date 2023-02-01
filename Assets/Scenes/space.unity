@@ -722,6 +722,7 @@ MonoBehaviour:
   currTarget: {x: 0, y: 0, z: 0}
   originalTarget: {x: 0, y: 0, z: 0}
   speed: 5
+  waitTime: 7
 --- !u!1 &305644387
 GameObject:
   m_ObjectHideFlags: 0
@@ -1092,6 +1093,7 @@ MonoBehaviour:
   currTarget: {x: 0, y: 0, z: 0}
   originalTarget: {x: 0, y: 0, z: 0}
   speed: 5
+  waitTime: 5
 --- !u!135 &578131472
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1366,6 +1368,10 @@ PrefabInstance:
     - target: {fileID: 139308, guid: 39332a43c68770e47ba274b4aadca0e6, type: 3}
       propertyPath: m_Name
       value: Stars_Flyby_Slow
+      objectReference: {fileID: 0}
+    - target: {fileID: 139308, guid: 39332a43c68770e47ba274b4aadca0e6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 473742, guid: 39332a43c68770e47ba274b4aadca0e6, type: 3}
       propertyPath: m_RootOrder
@@ -1673,6 +1679,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stars_Flyby_Medium
       objectReference: {fileID: 0}
+    - target: {fileID: 128992, guid: 181bdf4a0c05f1b45bc6151f67e9b937, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 425632, guid: 181bdf4a0c05f1b45bc6151f67e9b937, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -1837,7 +1847,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 8, y: 1.5, z: 1}
+  m_Size: {x: 0, y: 1.5, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &961045210
 MeshRenderer:
@@ -1898,7 +1908,7 @@ Transform:
   m_GameObject: {fileID: 961045206}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.459, z: -0.5}
-  m_LocalScale: {x: 0.16755778, y: 2.822887, z: 0.16755778}
+  m_LocalScale: {x: 5, y: 5.822887, z: 0.16755778}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -2377,6 +2387,7 @@ MonoBehaviour:
   currTarget: {x: 0, y: 0, z: 0}
   originalTarget: {x: 0, y: 0, z: 0}
   speed: 10
+  waitTime: 15
 --- !u!1001 &1195987347
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2682,6 +2693,7 @@ MonoBehaviour:
   currTarget: {x: 0, y: 0, z: 0}
   originalTarget: {x: 0, y: 0, z: 0}
   speed: 5
+  waitTime: 3
 --- !u!114 &1455109853 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6349443294500379974, guid: aa56b03b7690cea40aac6e338ff999f8, type: 3}
@@ -2969,6 +2981,7 @@ MonoBehaviour:
   currTarget: {x: 0, y: 0, z: 0}
   originalTarget: {x: 0, y: 0, z: 0}
   speed: 10
+  waitTime: 4
 --- !u!1001 &1749364810
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3489,3 +3502,4 @@ MonoBehaviour:
   currTarget: {x: 0, y: 0, z: 0}
   originalTarget: {x: 0, y: 0, z: 0}
   speed: 8
+  waitTime: 9

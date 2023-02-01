@@ -33,13 +33,23 @@ public class ScoreManager : MonoBehaviour
         
     }
 
-    public void AddPoint() {
-        combo += 1;
-        score += 1;
+    public void UpdateText() {
         scoreText.text = score.ToString() + " Points";
         PlayerPrefs.SetInt("highscore", score);
         if (score > highscore)
             PlayerPrefs.SetInt("highscoreValue", score);
+    }
+
+    public void AddPoint() {
+        combo += 1;
+        score += 1;
+        UpdateText();
+    }
+
+    public void AddBonus() {
+        combo += 1;
+        score += 50;
+        UpdateText();
     }
 
     public void ResetCombo() {

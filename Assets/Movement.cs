@@ -9,6 +9,7 @@ public class Movement : MonoBehaviour
     public Vector3 currTarget;
     public Vector3 originalTarget;
     public float speed;
+    public float waitTime;
 
     bool wait = true;
 
@@ -17,7 +18,8 @@ public class Movement : MonoBehaviour
     {
         Random.InitState(System.DateTime.Now.Millisecond);
 
-        originalTarget = player.transform.position;
+        // originalTarget = player.transform.position;
+        originalTarget = new Vector3(0, 0.5f, -0.5f);
         currTarget = new Vector3(
             Random.Range(originalTarget.x - 0.20f, originalTarget.x + 0.20f), 
             Random.Range(originalTarget.y + 0.20f, originalTarget.y + 1.75f), 
@@ -26,11 +28,15 @@ public class Movement : MonoBehaviour
         gameObject.transform.position = new Vector3(
             Random.Range(-4.0f, 4.0f), 
             Random.Range(2.0f, 4.0f), 
-            Random.Range(3.0f, 19.0f)
+            15f
         );
         
         if (speed == 0) {
             speed = 5f;
+        }
+
+        if (speed == 0) {
+            waitTime = Random.Range(3f, 10f);
         }
 
        StartCoroutine( WaitHandler() );
@@ -49,7 +55,7 @@ public class Movement : MonoBehaviour
         gameObject.GetComponent<Renderer>().enabled = false;
         wait = true;
 
-        yield return new WaitForSeconds(Random.Range(3f, 10f));
+        yield return new WaitForSeconds(waitTime);
 
         gameObject.GetComponent<Renderer>().enabled = true;
         wait = false;

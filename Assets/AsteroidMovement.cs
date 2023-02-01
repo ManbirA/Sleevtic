@@ -16,7 +16,7 @@ public class AsteroidMovement : Movement
         gameObject.transform.position = new Vector3(
             Random.Range(-4.0f, 4.0f), 
             Random.Range(2.0f, 4.0f), 
-            Random.Range(3.0f, 19.0f)
+            15.0f
         );
 
         if (col.gameObject.name == "Sword") {

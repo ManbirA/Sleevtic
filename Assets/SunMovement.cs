@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class PlanetMovement : AsteroidMovement
+public class SunMovement : Movement
 {
     public override void OnCollisionEnter(Collision col)
     {
@@ -20,12 +20,11 @@ public class PlanetMovement : AsteroidMovement
         );
 
         if (col.gameObject.name == "Sword") {
-            ScoreManager.scoreManagerInstance.AddPoint();
+            ScoreManager.scoreManagerInstance.AddBonus();
         }
 
         if (col.gameObject.name == "Shield") {
             StartCoroutine(GetRequest("http://192.168.206.205:80/1/on"));
-            ScoreManager.scoreManagerInstance.ResetCombo();
         }
 
         StartCoroutine( WaitHandler() );
