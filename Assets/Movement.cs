@@ -8,6 +8,9 @@ public class Movement : MonoBehaviour
     public GameObject player;
     public Vector3 currTarget;
     public Vector3 originalTarget;
+    public float new_x;
+    public float new_y;
+
     public float speed;
     public float waitTime;
 
@@ -20,22 +23,22 @@ public class Movement : MonoBehaviour
 
         // originalTarget = player.transform.position;
         originalTarget = new Vector3(0, 0.5f, -0.5f);
+        new_x = Random.Range(originalTarget.x - 1.2f, originalTarget.x + 1.2f);
+        new_y = Random.Range(1.0f, 1.5f);
+
         currTarget = new Vector3(
-            Random.Range(originalTarget.x - 0.20f, originalTarget.x + 0.20f), 
-            Random.Range(originalTarget.y + 0.20f, originalTarget.y + 1.75f), 
+            new_x, 
+            new_y, 
             originalTarget.z
         );
         gameObject.transform.position = new Vector3(
-            Random.Range(-4.0f, 4.0f), 
-            Random.Range(2.0f, 4.0f), 
+            new_x, 
+            new_y, 
             15f
         );
         
         if (speed == 0) {
             speed = 5f;
-        }
-
-        if (speed == 0) {
             waitTime = Random.Range(3f, 10f);
         }
 

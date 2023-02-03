@@ -14,7 +14,7 @@ public class SunMovement : Movement
         );
 
         gameObject.transform.position = new Vector3(
-            Random.Range(-4.0f, 4.0f), 
+            Random.Range(-2.0f, 2.0f), 
             Random.Range(2.0f, 4.0f), 
             15.0f
         );

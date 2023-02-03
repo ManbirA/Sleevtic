@@ -7,16 +7,18 @@ public class AsteroidMovement : Movement
 {
     public override void OnCollisionEnter(Collision col)
     {
+        new_x = Random.Range(originalTarget.x - 1.2f, originalTarget.x + 1.2f);
+        new_y = Random.Range(1.5f, 2.0f);
+
         currTarget = new Vector3(
-            Random.Range(originalTarget.x - 0.20f, originalTarget.x + 0.20f), 
-            Random.Range(originalTarget.y + 0.20f, originalTarget.y + 1.75f), 
+            new_x, 
+            new_y, 
             originalTarget.z
         );
-
         gameObject.transform.position = new Vector3(
-            Random.Range(-4.0f, 4.0f), 
-            Random.Range(2.0f, 4.0f), 
-            15.0f
+            new_x, 
+            new_y, 
+            15f
         );
 
         if (col.gameObject.name == "Sword") {
