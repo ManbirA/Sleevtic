@@ -23,8 +23,8 @@ public class Movement : MonoBehaviour
 
         // originalTarget = player.transform.position;
         originalTarget = new Vector3(0, 0.5f, -0.5f);
-        new_x = Random.Range(originalTarget.x - 1.2f, originalTarget.x + 1.2f);
-        new_y = Random.Range(1.0f, 1.5f);
+        new_x = Random.Range(originalTarget.x - 1.0f, originalTarget.x + 1.0f);
+        new_y = Random.Range(1.5f, 1.65f);
 
         currTarget = new Vector3(
             new_x, 

@@ -7,8 +7,8 @@ public class AsteroidMovement : Movement
 {
     public override void OnCollisionEnter(Collision col)
     {
-        new_x = Random.Range(originalTarget.x - 1.2f, originalTarget.x + 1.2f);
-        new_y = Random.Range(1.5f, 2.0f);
+        new_x = Random.Range(originalTarget.x - 0.75f, originalTarget.x + 0.75f);
+        new_y = Random.Range(1.5f, 1.65f);
 
         currTarget = new Vector3(
             new_x, 

@@ -40,18 +40,17 @@ public class ScoreManager : MonoBehaviour
             PlayerPrefs.SetInt("highscoreValue", score);
     }
 
-    // public int GetComboMultiplier() {
-    //     if (combo <= 50) {
-    //         return combo % 10;
-    //     } 
+    public int GetComboMultiplier() {
+        if (combo <= 50) {
+            return combo/10 + 1;
+        } 
 
-    //     return 10;
-    // }
+        return 10;
+    }
 
     public void AddPoint() {
         combo += 1;
-        // score += 2 * GetComboMultiplier();
-        score += 1;
+        score += 2 * GetComboMultiplier();
         UpdateText();
     }
 
