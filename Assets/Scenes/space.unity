@@ -1096,8 +1096,8 @@ MonoBehaviour:
   originalTarget: {x: 0, y: 0, z: 0}
   new_x: 0
   new_y: 0
-  speed: 5
-  waitTime: 5
+  speed: 8
+  waitTime: 3
 --- !u!135 &578131472
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1851,7 +1851,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0, y: 1.5, z: 1}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &961045210
 MeshRenderer:
@@ -2404,7 +2404,7 @@ MonoBehaviour:
   new_x: 0
   new_y: 0
   speed: 10
-  waitTime: 15
+  waitTime: 6
 --- !u!1001 &1195987347
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2711,8 +2711,8 @@ MonoBehaviour:
   originalTarget: {x: 0, y: 0, z: 0}
   new_x: 0
   new_y: 0
-  speed: 5
-  waitTime: 3
+  speed: 6
+  waitTime: 2
 --- !u!114 &1455109853 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6349443294500379974, guid: aa56b03b7690cea40aac6e338ff999f8, type: 3}
