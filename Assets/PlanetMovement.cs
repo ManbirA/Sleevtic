@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using SleevticSDK;
 
 public class PlanetMovement : Movement
 {
     public override void OnCollisionEnter(Collision col)
     {
+        
         new_x = Random.Range(originalTarget.x - 1.0f, originalTarget.x + 1.0f);
         new_y = Random.Range(1.5f, 1.65f);
 
@@ -23,10 +25,12 @@ public class PlanetMovement : Movement
 
         if (col.gameObject.name == "Sword") {
             ScoreManager.scoreManagerInstance.AddPoint();
+            sleeve.ActionOne();
         }
 
         if (col.gameObject.name == "Shield") {
-            StartCoroutine(GetRequest("http://192.168.206.205:80/1/on"));
+            
+            // StartCoroutine(GetRequest("http://192.168.206.205:80/1/on"));
             ScoreManager.scoreManagerInstance.ResetCombo();
         }
 

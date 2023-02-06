@@ -13,6 +13,7 @@ public class Movement : MonoBehaviour
 
     public float speed;
     public float waitTime;
+    public SleevticSDK sleeve;
 
     bool wait = true;
 
@@ -26,12 +27,16 @@ public class Movement : MonoBehaviour
         new_x = Random.Range(originalTarget.x - 1.0f, originalTarget.x + 1.0f);
         new_y = Random.Range(1.5f, 1.65f);
 
+        sleeve =  = new SleevticSDK();
+        sleeve.Ip = "localhost";
+
         currTarget = new Vector3(
             new_x, 
             new_y, 
             originalTarget.z
         );
         gameObject.transform.position = new Vector3(
+          
             new_x, 
             new_y, 
             15f
@@ -59,7 +64,7 @@ public class Movement : MonoBehaviour
         wait = true;
 
         yield return new WaitForSeconds(waitTime);
-
+x
         gameObject.GetComponent<Renderer>().enabled = true;
         wait = false;
     }
@@ -92,6 +97,6 @@ public class Movement : MonoBehaviour
 
     public virtual void OnCollisionEnter(Collision col)
     {
-        Debug.Log("This is the base class");
+      Debug.Log("This is the base class");
     }
 }
