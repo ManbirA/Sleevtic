@@ -27,7 +27,7 @@ public class Movement : MonoBehaviour
         new_x = Random.Range(originalTarget.x - 1.0f, originalTarget.x + 1.0f);
         new_y = Random.Range(1.5f, 1.65f);
 
-        sleeve =  = new SleevticSDK();
+        SleevticSDK sleeve = new SleevticSDK();
         sleeve.Ip = "localhost";
 
         currTarget = new Vector3(
@@ -64,7 +64,6 @@ public class Movement : MonoBehaviour
         wait = true;
 
         yield return new WaitForSeconds(waitTime);
-x
         gameObject.GetComponent<Renderer>().enabled = true;
         wait = false;
     }

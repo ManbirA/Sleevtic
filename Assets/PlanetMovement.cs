@@ -2,13 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
-using SleevticSDK;
 
 public class PlanetMovement : Movement
 {
     public override void OnCollisionEnter(Collision col)
-    {
-        
+    {   
         new_x = Random.Range(originalTarget.x - 1.0f, originalTarget.x + 1.0f);
         new_y = Random.Range(1.5f, 1.65f);
 
