@@ -7,8 +7,8 @@ public class PlanetMovement : Movement
 {
     public override void OnCollisionEnter(Collision col)
     {   
-        new_x = Random.Range(originalTarget.x - 1.0f, originalTarget.x + 1.0f);
-        new_y = Random.Range(1.5f, 1.65f);
+        new_x = Random.Range(originalTarget.x, originalTarget.x + 0.5f);
+        new_y = Random.Range(1.35f, 1.5f);
 
         currTarget = new Vector3(
             new_x, 
@@ -18,9 +18,11 @@ public class PlanetMovement : Movement
         gameObject.transform.position = new Vector3(
             new_x, 
             new_y, 
-            15f
+            10f
         );
 
+        GetComponent<Renderer>().material.color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
+        
         if (col.gameObject.name == "Sword") {
             ScoreManager.scoreManagerInstance.AddPoint();
             sleeve.ActionOne();

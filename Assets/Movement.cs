@@ -24,8 +24,8 @@ public class Movement : MonoBehaviour
 
         // originalTarget = player.transform.position;
         originalTarget = new Vector3(0, 0.5f, -0.5f);
-        new_x = Random.Range(originalTarget.x - 1.0f, originalTarget.x + 1.0f);
-        new_y = Random.Range(1.5f, 1.65f);
+        new_x = Random.Range(originalTarget.x - 0.5f, originalTarget.x + 0.5f);
+        new_y = Random.Range(1.45f, 1.55f);
 
         SleevticSDK sleeve = new SleevticSDK();
         sleeve.Ip = "localhost";
@@ -36,10 +36,9 @@ public class Movement : MonoBehaviour
             originalTarget.z
         );
         gameObject.transform.position = new Vector3(
-          
             new_x, 
             new_y, 
-            15f
+            10f
         );
         
         if (speed == 0) {
@@ -54,7 +53,7 @@ public class Movement : MonoBehaviour
     void Update()
     {
         if (!wait) {
-            transform.position = Vector3.MoveTowards(transform.position, currTarget, speed * Time.deltaTime);
+            gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, currTarget, speed * Time.deltaTime);
         }
     }
 
