@@ -20,8 +20,9 @@ public class Movement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Random.InitState(System.DateTime.Now.Millisecond);
+        // Random.InitState(System.DateTime.Now.Millisecond);
 
+        Random.InitState(42);
         // originalTarget = player.transform.position;
         originalTarget = new Vector3(0, 0.5f, -0.5f);
         new_x = Random.Range(originalTarget.x - 0.5f, originalTarget.x + 0.5f);
@@ -53,6 +54,12 @@ public class Movement : MonoBehaviour
     void Update()
     {
         if (!wait) {
+            // Vector3 direction = new Vector3(
+            //     0f, 
+            //     0f, 
+            //     -1f
+            // );
+            // transform.position += direction.normalized * speed * Time.deltaTime;
             gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, currTarget, speed * Time.deltaTime);
         }
     }

@@ -10,6 +10,8 @@ public class ScoreManager : MonoBehaviour
 
     public TMP_Text scoreText;
     public TMP_Text highScoreText;
+    public TMP_Text comboText;
+    public TMP_Text multiplierText;
 
     int score = 0;
     int highscore = 0;
@@ -25,6 +27,7 @@ public class ScoreManager : MonoBehaviour
         highscore = PlayerPrefs.GetInt("highscoreValue", 0);
         scoreText.text = score.ToString() + " Points";
         highScoreText.text = "High score: " + highscore.ToString();
+        comboText.text = "Combo: " + combo.ToString();
     }
 
     // Update is called once per frame
@@ -38,19 +41,23 @@ public class ScoreManager : MonoBehaviour
         PlayerPrefs.SetInt("highscore", score);
         if (score > highscore)
             PlayerPrefs.SetInt("highscoreValue", score);
+        comboText.text = "Combo: " + combo.ToString();
     }
 
     public int GetComboMultiplier() {
         if (combo <= 50) {
-            return combo/10 + 1;
+            int multiplier = combo/10 + 1;
+            multiplierText.text = multiplier.ToString() + "x";
+            return multiplier;
         } 
 
         return 10;
     }
 
     public void AddPoint() {
+        int comboMultiplier = GetComboMultiplier();
         combo += 1;
-        score += 2 * GetComboMultiplier();
+        score += 2 * comboMultiplier;
         UpdateText();
     }
 
@@ -62,5 +69,7 @@ public class ScoreManager : MonoBehaviour
 
     public void ResetCombo() {
         combo = 0;
+        comboText.text = "Combo: " + combo.ToString();
+        multiplierText.text = "1x";
     }
 }

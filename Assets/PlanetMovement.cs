@@ -15,6 +15,7 @@ public class PlanetMovement : Movement
             new_y, 
             originalTarget.z
         );
+
         gameObject.transform.position = new Vector3(
             new_x, 
             new_y, 
