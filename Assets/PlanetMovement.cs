@@ -7,7 +7,7 @@ public class PlanetMovement : Movement
 {
     public override void OnCollisionEnter(Collision col)
     {   
-        new_x = Random.Range(originalTarget.x, originalTarget.x + 0.5f);
+        new_x = Random.Range(originalTarget.x, originalTarget.x + 0.75f);
         new_y = Random.Range(1.35f, 1.5f);
 
         currTarget = new Vector3(
@@ -26,11 +26,10 @@ public class PlanetMovement : Movement
         
         if (col.gameObject.name == "Sword") {
             ScoreManager.scoreManagerInstance.AddPoint();
-            sleeve.ActionOne();
         }
 
         if (col.gameObject.name == "Shield") {
-            
+            sleeve.ActionOne();
             // StartCoroutine(GetRequest("http://192.168.206.205:80/1/on"));
             ScoreManager.scoreManagerInstance.ResetCombo();
         }

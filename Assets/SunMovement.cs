@@ -21,12 +21,9 @@ public class SunMovement : Movement
             new_y, 
             10f
         );
-
-        GetComponent<Renderer>().material.color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
         
         if (col.gameObject.name == "Sword") {
             ScoreManager.scoreManagerInstance.AddBonus();
-            sleeve.ActionOne();
         }
 
         if (col.gameObject.name == "Shield") {

@@ -7,7 +7,7 @@ public class AsteroidMovement : Movement
 {
     public override void OnCollisionEnter(Collision col)
     {
-        new_x = Random.Range(originalTarget.x - 0.5f, originalTarget.x);
+        new_x = Random.Range(originalTarget.x - 0.75f, originalTarget.x);
         new_y = Random.Range(1.35f, 1.55f);
 
         currTarget = new Vector3(
@@ -26,6 +26,7 @@ public class AsteroidMovement : Movement
         }
 
         if (col.gameObject.name == "Shield") {
+            // sleeve.ActionTwo();
             StartCoroutine(GetRequest("http://192.168.206.205:80/1/on"));
         }
 
