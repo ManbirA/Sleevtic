@@ -28,6 +28,7 @@ public class ScoreManager : MonoBehaviour
         scoreText.text = score.ToString() + " Points";
         highScoreText.text = "High score: " + highscore.ToString();
         comboText.text = "Combo: " + combo.ToString();
+        PlayerPrefs.SetInt("currentScoreValue", 0);
     }
 
     // Update is called once per frame
@@ -38,7 +39,7 @@ public class ScoreManager : MonoBehaviour
 
     public void UpdateText() {
         scoreText.text = score.ToString() + " Points";
-        PlayerPrefs.SetInt("highscore", score);
+        PlayerPrefs.SetInt("currentScoreValue", score);
         if (score > highscore)
             PlayerPrefs.SetInt("highscoreValue", score);
         comboText.text = "Combo: " + combo.ToString();
