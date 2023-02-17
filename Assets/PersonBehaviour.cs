@@ -21,12 +21,13 @@ public class PersonBehaviour : MonoBehaviour
 
     void OnCollisionEnter(Collision col)
     {
-        if (col.gameObject.name == "Sphere" || col.gameObject.name == "Asteroid_C") {
+        if (col.gameObject.name == "Asteroid_H") {
             if (numSpheres > 1) {
                 numSpheres -= 1;
             } else {
                 Destroy(col.gameObject);
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                SceneManager.LoadScene(1);
             }
         }
 
