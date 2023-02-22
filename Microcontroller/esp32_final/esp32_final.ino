@@ -3,8 +3,6 @@
 #include "Adafruit_DRV2605.h"
 
 #define TCAADDR 0x70 //keep the same
-#define SDApin 10 //change to appropiate GPIO pin on ESP32
-#define SCLpin 9 //change to appropiate GPIO pin on ESP32
 
 Adafruit_DRV2605 drv1;
 Adafruit_DRV2605 drv2;
@@ -12,8 +10,8 @@ Adafruit_DRV2605 drv3;
 Adafruit_DRV2605 drv4;
 
 // Replace with your network credentials
-const char* ssid = "REPLACE_WITH_YOUR_SSID";
-const char* password = "REPLACE_WITH_YOUR_PASSWORD";
+const char* ssid = "";
+const char* password = "";
 
 // Set web server port number to 80
 WiFiServer server(80);
@@ -47,7 +45,7 @@ void setup() {
   //
   // Setup motor drivers
   //
-  Wire.begin(SDApin, SCLpin);
+  Wire.begin();
   tcaselect(7);
   drv1.begin();
   drv1.selectLibrary(1);
@@ -104,6 +102,7 @@ void playEffect(int effect){
 }
 
 void loop(){
+  Serial.println(WiFi.localIP());
   WiFiClient client = server.available();   // Listen for incoming clients
 
   if (client) {                             // If a new client connects,
