@@ -13,34 +13,29 @@ public class SleevticSDK : MonoBehaviour
       
     }
 
-    public int ActionOne() {
+    public IEnumerator ActionOne() {
       string requestUrl = string.Format("http://{0}/1/on",Ip);
-      StartCoroutine(GetRequest(requestUrl));
-      return 0;
+      yield return GetRequest(requestUrl);
     }
 
-    public int ActionTwo() {
+    public IEnumerator ActionTwo() {
       string requestUrl = string.Format("http://{0}/2/on",Ip);
-      StartCoroutine(GetRequest(requestUrl));
-      return 0;
+      yield return GetRequest(requestUrl);
     }
 
-    int ActionThree() {
+    public IEnumerator ActionThree() {
       string requestUrl = string.Format("http://{0}/3/on",Ip);
-      StartCoroutine(GetRequest(requestUrl));
-      return 0;
+      yield return GetRequest(requestUrl);
     }
 
-    int ActionFour() {
+    public IEnumerator ActionFour() {
       string requestUrl = string.Format("http://{0}/4/on",Ip);
-      StartCoroutine(GetRequest(requestUrl));
-      return 0;
+      yield return GetRequest(requestUrl);
     }
 
-    int ActionFive() {
+    public IEnumerator ActionFive() {
       string requestUrl = string.Format("http://{0}/5/on",Ip);
-      StartCoroutine(GetRequest(requestUrl));
-      return 0;
+      yield return GetRequest(requestUrl);
     }
 
     private IEnumerator GetRequest(string uri)

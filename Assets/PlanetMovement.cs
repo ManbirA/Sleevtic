@@ -25,12 +25,12 @@ public class PlanetMovement : Movement
         GetComponent<Renderer>().material.color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
         
         if (col.gameObject.name == "Sword") {
+            StartCoroutine(sleeve.ActionTwo());
             ScoreManager.scoreManagerInstance.AddPoint();
         }
 
         if (col.gameObject.name == "Shield") {
-            sleeve.ActionOne();
-            // StartCoroutine(GetRequest("http://192.168.206.205:80/1/on"));
+            StartCoroutine(sleeve.ActionOne());
             ScoreManager.scoreManagerInstance.ResetCombo();
         }
 
