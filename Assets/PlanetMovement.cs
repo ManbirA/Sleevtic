@@ -29,8 +29,7 @@ public class PlanetMovement : Movement
         }
 
         if (col.gameObject.name == "Shield") {
-            sleeve.ActionOne();
-            // StartCoroutine(GetRequest("http://192.168.206.205:80/1/on"));
+            StartCoroutine(sleeve.ActionTwo());
             ScoreManager.scoreManagerInstance.ResetCombo();
         }
 

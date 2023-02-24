@@ -28,8 +28,8 @@ public class Movement : MonoBehaviour
         new_x = Random.Range(originalTarget.x - 0.5f, originalTarget.x + 0.5f);
         new_y = Random.Range(1.45f, 1.55f);
 
-        SleevticSDK sleeve = new SleevticSDK();
-        sleeve.Ip = "localhost";
+        sleeve = new SleevticSDK();
+        sleeve.Ip = "192.168.239.221:80";
 
         currTarget = new Vector3(
             new_x, 
