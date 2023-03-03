@@ -2,9 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlanetMovement : Movement
 {
+    int numObjects = 10;
+
     public override void OnCollisionEnter(Collision col)
     {   
         new_x = Random.Range(originalTarget.x, originalTarget.x + 0.75f);
@@ -31,6 +35,12 @@ public class PlanetMovement : Movement
         if (col.gameObject.name == "Shield") {
             StartCoroutine(sleeve.ActionTwo());
             ScoreManager.scoreManagerInstance.ResetCombo();
+        }
+
+        if (numObjects > 0) {
+            numObjects = numObjects - 1;
+        } else {
+            SceneManager.LoadScene(1);
         }
 
         StartCoroutine( WaitHandler() );
