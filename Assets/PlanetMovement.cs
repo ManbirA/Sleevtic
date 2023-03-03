@@ -25,7 +25,6 @@ public class PlanetMovement : Movement
         GetComponent<Renderer>().material.color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
         
         if (col.gameObject.name == "Sword") {
-            StartCoroutine(sleeve.ActionTwo());
             ScoreManager.scoreManagerInstance.AddPoint();
         }
 
