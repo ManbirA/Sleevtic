@@ -19,9 +19,11 @@ WiFiServer server(80);
 // Variable to store the HTTP request
 String header;
 
-// Auxiliar variables to store the current output state
-String output26State = "off";
-String output27State = "off";
+//Set static IP address
+IPAddress local_IP(192,168,116,221);
+IPAddress gateway(192,168,1,1);
+
+IPAddress subnet(255,255,0,0);
 
 // Current time
 unsigned long currentTime = millis();
@@ -33,7 +35,6 @@ const long timeoutTime = 2000;
 // function to select module on TCA multiplexer
 void tcaselect(uint8_t i) {
   if (i > 7) return;
- 
   Wire.beginTransmission(TCAADDR);
   Wire.write(1 << i);
   Wire.endTransmission();  
@@ -66,6 +67,12 @@ void setup() {
   //
   // Setup Wi-Fi server
   //
+
+  // Configure static IP Address
+  if(!WiFi.config(local_IP, gateway, subnet)) {
+    Serial.println("Failed to configure IP");
+  }
+  
   // Connect to Wi-Fi network with SSID and password
   Serial.print("Connecting to ");
   Serial.println(ssid);
@@ -92,17 +99,17 @@ void playEffect(int effect){
   drv2.setWaveform(1, 0);
   drv2.go();
   tcaselect(5);
-  drv2.setWaveform(0, effect);
-  drv2.setWaveform(1, 0);
-  drv2.go();
+  drv3.setWaveform(0, effect);
+  drv3.setWaveform(1, 0);
+  drv3.go();
   tcaselect(4);
-  drv2.setWaveform(0, effect);
-  drv2.setWaveform(1, 0);
-  drv2.go();
+  drv4.setWaveform(0, effect);
+  drv4.setWaveform(1, 0);
+  drv4.go();
 }
 
 void loop(){
-  Serial.println(WiFi.localIP());
+//  Serial.println(WiFi.localIP());
   WiFiClient client = server.available();   // Listen for incoming clients
 
   if (client) {                             // If a new client connects,
@@ -125,16 +132,16 @@ void loop(){
             // turns the GPIOs on and off
             if (header.indexOf("GET /1/on") >= 0) {
               Serial.println("Haptic effect 1 on");
-              playEffect(1);
+              playEffect(55);
             } else if (header.indexOf("GET /2/on") >= 0) {
               Serial.println("Haptic effect 2 on");
-              playEffect(2);
+              playEffect(8);
             } else if (header.indexOf("GET /3/on") >= 0) {
               Serial.println("Haptic effect 3 on");
-              playEffect(3);
+              playEffect(11);
             } else if (header.indexOf("GET /4/on") >= 0) {
               Serial.println("Haptic effect 4 on");
-              playEffect(4);
+              playEffect(49);
             }
             // Break out of the while loop
             break;
