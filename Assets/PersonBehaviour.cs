@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PersonBehaviour : MonoBehaviour
 {
-    public int numSpheres = 5;
+    public int numSpheres = 5000;
 
     // Start is called before the first frame update
     void Start()

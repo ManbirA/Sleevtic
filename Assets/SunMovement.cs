@@ -27,6 +27,7 @@ public class SunMovement : Movement
         }
 
         if (col.gameObject.name == "Shield") {
+          StartCoroutine(sleeve.ActionThree());
             // StartCoroutine(GetRequest("http://192.168.206.205:80/1/on"));
             // ScoreManager.scoreManagerInstance.ResetCombo();
         }

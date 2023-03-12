@@ -2,12 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
-using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class PlanetMovement : Movement
 {
-    int numObjects = 10;
+    int numObjects = 1000;
 
     public override void OnCollisionEnter(Collision col)
     {   

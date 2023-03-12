@@ -29,7 +29,7 @@ public class Movement : MonoBehaviour
         new_y = Random.Range(1.45f, 1.55f);
 
         sleeve = new SleevticSDK();
-        sleeve.Ip = "192.168.239.221:80";
+        sleeve.Ip = "192.168.116.221:80";
 
         currTarget = new Vector3(
             new_x, 
